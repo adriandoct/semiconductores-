@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import HeroBanner from './components/layout/HeroBanner';
 import WeekView from './components/views/WeekView';
 import ToolsView from './components/views/ToolsView';
 import ReportGeneratorView from './components/views/ReportGeneratorView';
@@ -24,13 +25,18 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
         
+        {/* Hero Presentation Banner */}
+        {activeTab === 'week' && (
+          <HeroBanner onExploreTools={() => setActiveTab('tools')} />
+        )}
+
         {/* Quick Module Navigator Bar */}
         {activeTab === 'week' && (
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800 glassmorphism">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
-              <span>Curso de Caracterización</span>
+              <span>Módulo del Curso</span>
               <ChevronRight className="w-4 h-4 text-cyan-400" />
               <span className="text-cyan-300 font-bold">Semana {currentWeek} de 4</span>
             </div>
@@ -40,9 +46,9 @@ export default function App() {
                 <button
                   key={w.id}
                   onClick={() => setCurrentWeek(w.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
                     currentWeek === w.id
-                      ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20'
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-md shadow-cyan-500/20'
                       : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                   }`}
                 >
