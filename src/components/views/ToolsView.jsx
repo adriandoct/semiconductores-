@@ -3,7 +3,7 @@ import DiodeIVSimulator from '../simulators/DiodeIVSimulator';
 import BJTCurveSimulator from '../simulators/BJTCurveSimulator';
 import MOSFETSimulator from '../simulators/MOSFETSimulator';
 import PinoutInspector from '../pinouts/PinoutInspector';
-import { Activity, Cpu, Zap, Eye, Calculator } from 'lucide-react';
+import { Activity, Cpu, Zap, Eye, Calculator, Sparkles } from 'lucide-react';
 
 export default function ToolsView() {
   const [selectedTool, setSelectedTool] = useState('diode'); // 'diode' | 'bjt' | 'mosfet' | 'pinout'
@@ -11,19 +11,24 @@ export default function ToolsView() {
   return (
     <div className="space-y-6">
       {/* Tool Selector Bar */}
-      <div className="glassmorphism p-4 rounded-2xl border border-cyan-500/20 bg-slate-900/80 text-white flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-xl font-extrabold text-cyan-400 flex items-center gap-2">
-          <Calculator className="w-6 h-6 text-cyan-400" />
-          Laboratorio Virtual & Workbench de Caracterización
-        </h2>
+      <div className="glassmorphism p-5 rounded-3xl border border-cyan-500/30 bg-slate-900/90 text-white flex flex-wrap items-center justify-between gap-4 shadow-xl">
+        <div>
+          <h2 className="text-xl font-extrabold text-white flex items-center gap-2 font-heading">
+            <Calculator className="w-6 h-6 text-cyan-400" />
+            Laboratorio Virtual & Workbench de Caracterización
+          </h2>
+          <p className="text-xs text-slate-400 mt-0.5">
+            Simulación interactiva de parámetros físicos y análisis de semiconductores en tiempo real
+          </p>
+        </div>
 
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setSelectedTool('diode')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
               selectedTool === 'diode'
-                ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-lg shadow-cyan-500/25 border border-cyan-400/40'
+                : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700'
             }`}
           >
             <Activity className="w-4 h-4" /> Diodo I-V
@@ -31,10 +36,10 @@ export default function ToolsView() {
 
           <button
             onClick={() => setSelectedTool('bjt')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
               selectedTool === 'bjt'
-                ? 'bg-violet-500 text-white shadow-md shadow-violet-500/20'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-500/25 border border-violet-400/40'
+                : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700'
             }`}
           >
             <Cpu className="w-4 h-4" /> BJT (hFE)
@@ -42,10 +47,10 @@ export default function ToolsView() {
 
           <button
             onClick={() => setSelectedTool('mosfet')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
               selectedTool === 'mosfet'
-                ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 shadow-lg shadow-emerald-500/25 border border-emerald-400/40'
+                : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700'
             }`}
           >
             <Zap className="w-4 h-4" /> MOSFET (VGS)
@@ -53,10 +58,10 @@ export default function ToolsView() {
 
           <button
             onClick={() => setSelectedTool('pinout')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
               selectedTool === 'pinout'
-                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 shadow-lg shadow-amber-500/25 border border-amber-400/40'
+                : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700'
             }`}
           >
             <Eye className="w-4 h-4" /> Pinouts & Multímetro
