@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* THEME SYSTEM VARIABLES */
 
@@ -76,7 +73,7 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Dynamic Glassmorphism Cards */
+/* Glassmorphism Cards */
 .glassmorphism {
   background: var(--card-bg);
   backdrop-filter: blur(20px);
