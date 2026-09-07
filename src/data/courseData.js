@@ -1,13 +1,13 @@
 // Course Data for "Auxiliar en la Caracterización de Dispositivos Semiconductores"
-// Full 40-hour curriculum, 4 weekly modules, labs, step-by-step procedures, solutions, and quizzes.
+// Full 40-hour curriculum, 4 weekly modules, labs, step-by-step procedures, solutions, Tinkercad guides, and quizzes.
 
 export const COURSE_INFO = {
   title: "Auxiliar en la Caracterización de Dispositivos Semiconductores",
-  subtitle: "Plataforma Interactiva para la Enseñanza y Caracterización Práctica de Laboratorio",
+  subtitle: "Plataforma Didáctica con Soluciones Gráficas en Tinkercad y Simulación de Laboratorio",
   duration: "40 Horas (Teoría + Práctica)",
   author: "Laboratorio de Electrónica y Semiconductores",
   targetAudience: "Docentes y Estudiantes de Bachillerato Técnico y Licenciatura en Electrónica/Mecatrónica",
-  objective: "Desarrollar competencias en la identificación, medición, extracción de parámetros técnicos y prueba funcional de dispositivos semiconductores (Diodos, BJT, MOSFET) bajo normas de seguridad ESD."
+  objective: "Desarrollar competencias en la identificación, medición, extracción de parámetros técnicos y prueba funcional de dispositivos semiconductores (Diodos, BJT, MOSFET) bajo normas de seguridad ESD con respaldo gráfico en Tinkercad Circuits."
 };
 
 export const WEEKS_DATA = [
@@ -37,7 +37,7 @@ Al juntar un cristal Tipo P y uno Tipo N se genera la **Unión P-N**, creando un
         title: "1.2 Polarización Directa e Inversa",
         content: `**Polarización Directa (Forward Bias):** Se conecta el polo positivo de la fuente al Ánodo (P) y el negativo al Cátodo (N). La barrera de potencial se reduce cuando $V > V_{knee}$, permitiendo el flujo masivo de corriente a través del dispositivo.
         
-**Polarización Inversa (Reverse Bias):** Se invierte la polaridad. La zona de depleción se ensancha, impidiendo el flujo de corriente principal (únicamente circula una corriente de fuga minúscula $I_S \sim nA$). Si el voltaje inverso supera el voltaje de ruptura ($V_{BR}$), ocurre la avalancha.`,
+**Polarización Inversa (Reverse Bias):** Se invierte la polaridad. La zona de depleción se ensancha, impidiendo el flujo de corriente principal (únicamente circula una corriente de fuga minúscula $I_S \\sim nA$). Si el voltaje inverso supera el voltaje de ruptura ($V_{BR}$), ocurre la avalancha.`,
         keyPoints: [
           "Directa: Anodo (+), Cátodo (-). Conducción activa.",
           "Inversa: Anodo (-), Cátodo (+). Bloqueo y corriente de fuga $I_S$.",
@@ -48,9 +48,9 @@ Al juntar un cristal Tipo P y uno Tipo N se genera la **Unión P-N**, creando un
         id: "encapsulados",
         title: "1.3 Encapsulados Estándar y Terminales",
         content: `Los componentes semiconductores se comercializan en diversos encapsulados según su capacidad de disipación térmica y aplicación:
-        - **DO-41 / DO-35**: Diodos de señal y rectificadores (la franja plateada/negra indica la terminal CÁTODO).
-        - **TO-92**: Transistores BJT de pequeña señal (2N2222, BC548). Vista frontal con lado plano: Terminales 1, 2, 3.
-        - **TO-220**: Transistores de potencia y MOSFETs (IRF540). Posee pestaña metálica para disipador de calor conectada a la terminal central (Drenador o Colector).`,
+- **DO-41 / DO-35**: Diodos de señal y rectificadores (la franja plateada/negra indica la terminal CÁTODO).
+- **TO-92**: Transistores BJT de pequeña señal (2N2222, BC548). Vista frontal con lado plano: Terminales 1, 2, 3.
+- **TO-220**: Transistores de potencia y MOSFETs (IRF540). Posee pestaña metálica para disipador de calor conectada a la terminal central (Drenador o Colector).`,
         keyPoints: [
           "Identificación en Diodos: Banda impresa = Cátodo (K).",
           "Identificación BJT en Multímetro: Prueba de diodo B-E (~0.7V) y B-C (~0.68V).",
@@ -97,7 +97,7 @@ Al juntar un cristal Tipo P y uno Tipo N se genera la **Unión P-N**, creando un
           stepNumber: 4,
           title: "Identificación de Terminales Base-Emisor-Colector en BJT NPN",
           description: "Coloque la punta Roja en la patilla central del 2N2222 (Base) y pruebe con la Negra en las otras dos patillas.",
-          expectedResult: "Lectura Base-Emisor (B-E) ≈ 0.690V | Lectura Base-Colector (B-C) ≈ 0.680V. (La junta B-E siempre presenta una caída ligeramente superior a B-C)."
+          expectedResult: "Lectura Base-Emisor (B-E) ≈ 0.690V | Lectura Base-Colector (B-C) ≈ 0.680V."
         }
       ],
       solutionGuide: {
@@ -107,6 +107,22 @@ Al juntar un cristal Tipo P y uno Tipo N se genera la **Unión P-N**, creando un
           "**Diodo en Cortocircuito**: Marca ~0.000V y pita en ambas direcciones.",
           "**Diodo Bueno (Silicio)**: Directa 0.5V-0.7V, Inversa 'OL'.",
           "**Diodo Bueno (LED Rojo)**: Directa 1.8V-2.2V, Inversa 'OL'."
+        ]
+      },
+      tinkercadGuide: {
+        title: "Solución Gráfica del Maestro en Tinkercad Circuits (Práctica 1)",
+        tinkercadUrl: "https://www.tinkercad.com/circuits",
+        breadboardSetup: "Insertar el Diodo 1N4007 en las filas 10 y 15 del Protoboard virtual de Tinkercad. Conectar el Multímetro virtual en modo Diodo.",
+        wiringDetails: [
+          "Punta ROJA del Multímetro virtual Tinkercad a la fila 10 (Ánodo 1N4007).",
+          "Punta NEGRA del Multímetro virtual Tinkercad a la fila 15 (Cátodo 1N4007 con la franja blanca).",
+          "Transistor 2N2222 insertado en las filas 20, 21 y 22. Punta ROJA a la patilla 2 (Base) y NEGRA a patilla 1 (Emisor)."
+        ],
+        expectedVirtualReadings: [
+          { test: "1N4007 Directa (Tinkercad)", value: "0.68 V (680 mV)", status: "Conducción Activa" },
+          { test: "1N4007 Inversa (Tinkercad)", value: "ERR / OL (Infinita)", status: "Bloqueo Correcto" },
+          { test: "2N2222 Junta B-E (Tinkercad)", value: "0.71 V", status: "Unión NPN Sana" },
+          { test: "2N2222 Junta B-C (Tinkercad)", value: "0.69 V", status: "Unión NPN Sana" }
         ]
       }
     },
@@ -177,7 +193,7 @@ Al juntar un cristal Tipo P y uno Tipo N se genera la **Unión P-N**, creando un
     id: 2,
     title: "Semana 2: Parámetros Técnicos y Caracterización I-V del Diodo",
     badge: "Módulo 2",
-    subtitle: "Ecuación de Shockley, resistencia dinámica $r_d$, trazado de curva $I-V$ y hojas de datos",
+    subtitle: "Ecuación de Shockley, resistencia dinámica rd, trazado de curva I-V y hojas de datos",
     hours: "10 Horas",
     overview: "Esta semana aborda el análisis cuantitativo de las curvas de corriente contra voltaje (I-V) en diodos semiconductores. Se profundiza en la Ecuación de Shockley, el cálculo de resistencia estática y dinámica, y la extracción de parámetros desde hojas de datos del fabricante.",
     theorySections: [
@@ -193,14 +209,14 @@ Donde:
 - $\\eta$: Factor de idealidad del diodo ($1 \\le \\eta \\le 2$, para silicio común $\\eta \\approx 1.1 - 1.5$).
 - $V_T$: Voltaje térmico $V_T = \\frac{k \\cdot T}{q} \\approx 25.85 \\text{ mV}$ a $300\\text{ K}$ ($25^\\circ\\text{C}$).`,
         keyPoints: [
-          "Sensibilidad térmica: $I_S$ se duplica por cada incrementó de $10^\\circ\\text{C}$.",
+          "Sensibilidad térmica: $I_S$ se duplica por cada incremento de $10^\\circ\\text{C}$.",
           "Voltaje térmico $V_T \\approx 26\\text{ mV}$ a temperatura ambiente.",
           "Comportamiento exponencial en zona directa ($V_D > 0.5V$)."
         ]
       },
       {
         id: "resistencia_dinamica",
-        title: "2.2 Resistencia Estática ($R_D$) vs Resistencia Dinámica ($r_d$)",
+        title: "2.2 Resistencia Estática (RD) vs Resistencia Dinámica (rd)",
         content: `En la caracterización I-V distinguimos dos conceptos de resistencia:
         
 1. **Resistencia Estática (DC):** $R_D = \\frac{V_D}{I_D}$. Es la pendiente del punto de operación DC.
@@ -216,16 +232,16 @@ Para pequeñas señales en la zona de conducción directa, la resistencia dinám
     ],
     labPractice: {
       title: "Práctica 2 del Viernes: Caracterización Experimental de la Curva I-V del Diodo 1N4007",
-      objective: "Construir experimentalmente la gráfica Corriente vs Voltaje ($I_D$ vs $V_D$) de un diodo 1N4007 registrando datos punto a punto y determinando la resistencia dinámica.",
+      objective: "Construir experimentalmente la gráfica Corriente vs Voltaje (ID vs VD) de un diodo 1N4007 registrando datos punto a punto y determinando la resistencia dinámica.",
       materials: [
         "1x Diodo Rectificador 1N4007",
-        "1x Resistencia de limitación de $1\\text{ k}\\Omega$ (1/4W, 5%)",
+        "1x Resistencia de limitación de 1 kΩ (1/4W, 5%)",
         "1x Fuente de Alimentación DC Variable (0 - 12V)",
         "2x Multímetros Digitales (Uno como voltímetro en paralelo y otro como miliamperímetro en serie)",
         "1x Protoboard y cables de conexión"
       ],
       safetyNotes: [
-        "Verificar que la corriente en serie no supere la potencia nominal de la resistencia de $1\\text{ k}\\Omega$ ($P = I^2 R$).",
+        "Verificar que la corriente en serie no supere la potencia nominal de la resistencia de 1 kΩ.",
         "Conectar el miliamperímetro en SERIE con el circuito. ¡Nunca en paralelo con la fuente!",
         "Incrementar el voltaje DC gradualmente de 0V a 10V observando el encendido del diodo."
       ],
@@ -233,42 +249,60 @@ Para pequeñas señales en la zona de conducción directa, la resistencia dinám
         {
           stepNumber: 1,
           title: "Montaje del Circuito",
-          description: "Conecte en serie: Fuente DC (+) ➔ Miliamperímetro (+) / (-) ➔ Resistencia $1\\text{ k}\\Omega$ ➔ Ánodo Diodo ➔ Cátodo Diodo ➔ Fuente DC (-). Coloque el Voltímetro en paralelo directamente sobre el diodo.",
-          expectedResult: "Circuito cerrado listo para tomar lecturas pareadas de $V_D$ (mV) e $I_D$ (mA)."
+          description: "Conecte en serie: Fuente DC (+) ➔ Miliamperímetro (+) / (-) ➔ Resistencia 1 kΩ ➔ Ánodo Diodo ➔ Cátodo Diodo ➔ Fuente DC (-). Coloque el Voltímetro en paralelo directamente sobre el diodo.",
+          expectedResult: "Circuito cerrado listo para tomar lecturas pareadas de VD (mV) e ID (mA)."
         },
         {
           stepNumber: 2,
           title: "Toma de Datos en la Zona Sub-Umbral (0V a 0.5V)",
-          description: "Ajuste la fuente en 0.5V, 1.0V, 1.5V. Mida $V_D$ e $I_D$.",
-          expectedResult: "El voltaje en el diodo crecerá casi igual a la fuente, mientras que la corriente será prácticamente $0\\text{ mA}$ ($I_D < 0.05\\text{ mA}$)."
+          description: "Ajuste la fuente en 0.5V, 1.0V, 1.5V. Mida VD e ID.",
+          expectedResult: "El voltaje en el diodo crecerá casi igual a la fuente, mientras que la corriente será prácticamente 0 mA."
         },
         {
           stepNumber: 3,
           title: "Toma de Datos en la Zona de Conducción (0.6V a 0.75V)",
-          description: "Incremente la fuente a 3V, 5V, 8V, 10V, 12V. Registre $V_D$ e $I_D$.",
-          expectedResult: "A $V_S = 10\\text{V}$, $V_D \\approx 0.685\\text{V}$, e $I_D \\approx \\frac{10 - 0.685}{1000} = 9.315\\text{ mA}$."
+          description: "Incremente la fuente a 3V, 5V, 8V, 10V, 12V. Registre VD e ID.",
+          expectedResult: "A VS = 10V, VD ≈ 0.685V, e ID ≈ 9.315 mA."
         },
         {
           stepNumber: 4,
-          title: "Cálculo de la Resistencia Dinámica $r_d$",
-          description: "Calcule $\\Delta V_D / \\Delta I_D$ entre los puntos de $2\\text{ mA}$ y $8\\text{ mA}$.",
-          expectedResult: "$\\Delta V_D \\approx 40\\text{ mV}$, $\\Delta I_D = 6\\text{ mA} \\implies r_d = \\frac{40\\text{ mV}}{6\\text{ mA}} \\approx 6.67 \\Omega$."
+          title: "Cálculo de la Resistencia Dinámica rd",
+          description: "Calcule ΔVD / ΔID entre los puntos de 2 mA y 8 mA.",
+          expectedResult: "ΔVD ≈ 40 mV, ΔID = 6 mA ⟹ rd ≈ 6.67 Ω."
         }
       ],
       solutionGuide: {
         title: "Tabla de Mediciones Típicas de Referencia (Diodo 1N4007 a 25°C)",
         items: [
-          "Fuente $V_S = 1.0\\text{V} \\implies V_D = 0.450\\text{V}, I_D = 0.55\\text{ mA}$",
-          "Fuente $V_S = 3.0\\text{V} \\implies V_D = 0.620\\text{V}, I_D = 2.38\\text{ mA}$",
-          "Fuente $V_S = 5.0\\text{V} \\implies V_D = 0.660\\text{V}, I_D = 4.34\\text{ mA}$",
-          "Fuente $V_S = 10.0\\text{V} \\implies V_D = 0.695\\text{V}, I_D = 9.305\\text{ mA}$"
+          "Fuente VS = 1.0V ⟹ VD = 0.450V, ID = 0.55 mA",
+          "Fuente VS = 3.0V ⟹ VD = 0.620V, ID = 2.38 mA",
+          "Fuente VS = 5.0V ⟹ VD = 0.660V, ID = 4.34 mA",
+          "Fuente VS = 10.0V ⟹ VD = 0.695V, ID = 9.305 mA"
+        ]
+      },
+      tinkercadGuide: {
+        title: "Solución Gráfica del Maestro en Tinkercad Circuits (Práctica 2)",
+        tinkercadUrl: "https://www.tinkercad.com/circuits",
+        breadboardSetup: "Conectar Fuente DC Variable de Tinkercad en 0-12V. Resistencia 1kΩ en serie con el Diodo 1N4007. Intercalar Miliamperímetro virtual Tinkercad en serie y Voltímetro virtual en paralelo al diodo.",
+        wiringDetails: [
+          "Fuente DC (+) Tinkercad a la terminal positiva del Amperímetro virtual (Modo A).",
+          "Terminal negativa del Amperímetro Tinkercad a una pata de R = 1kΩ (Fila 12).",
+          "Otra pata de R = 1kΩ (Fila 16) al Ánodo del Diodo 1N4007.",
+          "Cátodo 1N4007 a la linea de Tierra (-) de la Fuente DC de Tinkercad.",
+          "Voltímetro virtual 2 (Modo V) conectado directamente en paralelo sobre Ánodo y Cátodo del diodo."
+        ],
+        expectedVirtualReadings: [
+          { test: "Fuente DC en 1.0V (Tinkercad)", value: "VD = 0.45V, ID = 0.55mA", status: "Sub-umbral" },
+          { test: "Fuente DC en 5.0V (Tinkercad)", value: "VD = 0.66V, ID = 4.34mA", status: "Conducción Exponencial" },
+          { test: "Fuente DC en 10.0V (Tinkercad)", value: "VD = 0.70V, ID = 9.30mA", status: "Conducción Plena" },
+          { test: "Resistencia Dinámica rd (Tinkercad)", value: "rd = 6.67 Ω", status: "Cálculo Derivado Correcto" }
         ]
       }
     },
     quiz: [
       {
         id: "q2_1",
-        question: "En la Ecuación de Shockley, ¿qué representa la variable $V_T$ y cuál es su valor aproximado a 25°C?",
+        question: "En la Ecuación de Shockley, ¿qué representa la variable VT y cuál es su valor aproximado a 25°C?",
         options: [
           "Voltaje Total del circuito, ~12V",
           "Voltaje Térmico, ~26 mV",
@@ -276,11 +310,11 @@ Para pequeñas señales en la zona de conducción directa, la resistencia dinám
           "Voltaje de Ruptura Zener, ~5.1V"
         ],
         correctIndex: 1,
-        explanation: "El voltaje térmico $V_T = k T / q$ equivale a aproximadamente $25.85\\text{ mV}$ a temperatura ambiente ($300\\text{ K}$)."
+        explanation: "El voltaje térmico VT = k T / q equivale a aproximadamente 25.85 mV a temperatura ambiente (300 K)."
       },
       {
         id: "q2_2",
-        question: "Si la corriente continua $I_D$ por un diodo es de $5\\text{ mA}$, ¿cuál es su resistencia dinámica aproximada $r_d$ considerando $\\eta = 1$?",
+        question: "Si la corriente continua ID por un diodo es de 5 mA, ¿cuál es su resistencia dinámica aproximada rd considerando η = 1?",
         options: [
           "5.2 Ω",
           "26 Ω",
@@ -288,11 +322,11 @@ Para pequeñas señales en la zona de conducción directa, la resistencia dinám
           "0.5 Ω"
         ],
         correctIndex: 0,
-        explanation: "$r_d = \\frac{V_T}{I_D} = \\frac{26\\text{ mV}}{5\\text{ mA}} = 5.2 \\Omega$."
+        explanation: "rd = VT / ID = 26 mV / 5 mA = 5.2 Ω."
       },
       {
         id: "q2_3",
-        question: "¿Cómo se comporta la corriente de saturación inversa $I_S$ ante un aumento de la temperatura ambiente?",
+        question: "¿Cómo se comporta la corriente de saturación inversa IS ante un aumento de la temperatura ambiente?",
         options: [
           "Permanece completamente constante independientemente de la temperatura",
           "Disminuye exponencialmente hacia cero",
@@ -300,19 +334,19 @@ Para pequeñas señales en la zona de conducción directa, la resistencia dinám
           "Se vuelve negativa provocando oscilaciones"
         ],
         correctIndex: 2,
-        explanation: "La generación térmica de pares electrón-hueco en la zona de depleción hace que $I_S$ se duplique aproximadamente cada $10^\\circ\\text{C}$."
+        explanation: "La generación térmica de pares electrón-hueco en la zona de depleción hace que IS se duplique aproximadamente cada 10°C."
       },
       {
         id: "q2_4",
         question: "En la curva I-V del diodo 1N4007, ¿qué parámetro técnico indica la corriente máxima continua que puede conducir sin destruirse?",
         options: [
-          "$V_{RRM}$ (Maximum Repetitive Reverse Voltage)",
-          "$I_{F(AV)}$ (Maximum Average Forward Current)",
-          "$V_F$ (Forward Voltage Drop)",
-          "$C_T$ (Total Capacitance)"
+          "VRRM (Maximum Repetitive Reverse Voltage)",
+          "IF(AV) (Maximum Average Forward Current)",
+          "VF (Forward Voltage Drop)",
+          "CT (Total Capacitance)"
         ],
         correctIndex: 1,
-        explanation: "$I_{F(AV)}$ representa la corriente promedio directa máxima que soporta el componente (para el 1N4007 es de $1.0\\text{ A}$)."
+        explanation: "IF(AV) representa la corriente promedio directa máxima que soporta el componente (para el 1N4007 es de 1.0 A)."
       },
       {
         id: "q2_5",
@@ -324,116 +358,133 @@ Para pequeñas señales en la zona de conducción directa, la resistencia dinám
           "Para rectificar la señal automáticamente"
         ],
         correctIndex: 1,
-        explanation: "Debido a la naturaleza exponencial de la curva I-V, pequeños incrementos de voltaje en el diodo sobre $0.7\\text{V}$ provocan corrientes masivas que quemarían el dispositivo sin una resistencia limitadora."
+        explanation: "Debido a la naturaleza exponencial de la curva I-V, pequeños incrementos de voltaje en el diodo sobre 0.7V provocan corrientes masivas que quemarían el dispositivo sin una resistencia limitadora."
       }
     ]
   },
   {
     id: 3,
-    title: "Semana 3: Extracción de Parámetros y Ganancia ($h_{FE}$) en Transistores BJT",
+    title: "Semana 3: Extracción de Parámetros y Ganancia (hFE) en Transistores BJT",
     badge: "Módulo 3",
-    subtitle: "Configuración Emisor Común, corriente de Base ($I_B$), Colector ($I_C$) y saturación",
+    subtitle: "Configuración Emisor Común, corriente de Base (IB), Colector (IC) y saturación",
     hours: "10 Horas",
-    overview: "Esta semana se enfoca en el transistor de unión bipolar (BJT). Se analiza el principio de amplificación de corriente ($I_C = h_{FE} \\cdot I_B$), las regiones de operación (Corte, Activa, Saturación) y los métodos para extraer la ganancia $h_{FE}$ y trazar la recta de carga DC.",
+    overview: "Esta semana se enfoca en el transistor de unión bipolar (BJT). Se analiza el principio de amplificación de corriente (IC = hFE * IB), las regiones de operación (Corte, Activa, Saturación) y los métodos para extraer la ganancia hFE y trazar la recta de carga DC.",
     theorySections: [
       {
         id: "bjt_principios",
         title: "3.1 Principio de Operación del Transistor BJT",
-        content: `El BJT es un dispositivo controlado por corriente que consta de tres regiones semiconductoras semiconductoras entrelazadas (NPN o PNP):
+        content: `El BJT es un dispositivo controlado por corriente que consta de tres regiones semiconductoras entrelazadas (NPN o PNP):
 - **Base (B)**: Región muy delgada y levemente dopada.
 - **Emisor (E)**: Región fuertemente dopada para inyectar portadores.
 - **Colector (C)**: Región de tamaño físico mayor para disipar potencia.
         
 En la **Región Activa**: La unión B-E está polarizada en Directa ($V_{BE} \\approx 0.7V$) y la unión B-C en Inversa. La pequeña corriente inyectada por la base ($I_B$) controla una corriente mucho mayor que fluye de Colector a Emisor ($I_C$).`,
         keyPoints: [
-          "Relación fundamental: $I_C = h_{FE} \\cdot I_B = \\beta \\cdot I_B$.",
-          "Corriente de Emisor: $I_E = I_C + I_B = (h_{FE} + 1) I_B$.",
-          "Relación $\\alpha$: $\\alpha = \\frac{\\beta}{\\beta + 1} \\approx 0.99$."
+          "Relación fundamental: IC = hFE * IB = β * IB.",
+          "Corriente de Emisor: IE = IC + IB = (hFE + 1) IB.",
+          "Relación α: α = β / (β + 1) ≈ 0.99."
         ]
       },
       {
         id: "regiones_bjt",
         title: "3.2 Regiones de Trabajo: Corte, Activa y Saturación",
-        content: `1. **Corte (Cutoff):** $I_B = 0 \\implies I_C \\approx 0$, $V_{CE} = V_{CC}$. El transistor actúa como un interruptor abierto.
-2. **Región Activa (Linear Active):** $V_{CE} > V_{CE(sat)} \\approx 0.2V$. $I_C = \\beta \\cdot I_B$. Utilizado para amplificación de señales analógicas.
-3. **Saturación (Saturation):** La corriente $I_C$ alcanza su valor máximo determinado por la red externa $I_{C(sat)} = \\frac{V_{CC} - V_{CE(sat)}}{R_C}$. $V_{CE(sat)} \\approx 0.1V - 0.3V$. El transistor actúa como un interruptor cerrado.`,
+        content: `1. **Corte (Cutoff):** IB = 0 ⟹ IC ≈ 0, VCE = VCC. El transistor actúa como un interruptor abierto.
+2. **Región Activa (Linear Active):** VCE > VCE(sat) ≈ 0.2V. IC = β * IB. Utilizado para amplificación de señales analógicas.
+3. **Saturación (Saturation):** La corriente IC alcanza su valor máximo determinado por la red externa IC(sat) = (VCC - VCE(sat)) / RC. VCE(sat) ≈ 0.1V - 0.3V. El transistor actúa como un interruptor cerrado.`,
         keyPoints: [
-          "Punto de Operación Q: ($V_{CEQ}, I_{CQ}$) definido por la recta de carga DC.",
-          "Cálculo de Saturación: $I_B > \\frac{I_{C(sat)}}{\\beta_{min}}$ para garantizar conmutación sólida."
+          "Punto de Operación Q: (VCEQ, ICQ) definido por la recta de carga DC.",
+          "Cálculo de Saturación: IB > IC(sat) / β_min para garantizar conmutación sólida."
         ]
       }
     ],
     labPractice: {
-      title: "Práctica 3 del Viernes: Caracterización y Determinación Experimental de $h_{FE}$ en Transistor 2N2222",
-      objective: "Medir las corrientes de Base ($I_B$) y Colector ($I_C$) en un circuito en Emisor Común para determinar el factor de amplificación de corriente continua $h_{FE}$ del transistor NPN 2N2222.",
+      title: "Práctica 3 del Viernes: Caracterización y Determinación Experimental de hFE en Transistor 2N2222",
+      objective: "Medir las corrientes de Base (IB) y Colector (IC) en un circuito en Emisor Común para determinar el factor de amplificación de corriente continua hFE del transistor NPN 2N2222.",
       materials: [
         "1x Transistor NPN 2N2222A (encapsulado TO-92)",
-        "1x Resistencia de Base $R_B = 100\\text{ k}\\Omega$ (1/4W)",
-        "1x Resistencia de Colector $R_C = 330\\ \\Omega$ (1/4W)",
+        "1x Resistencia de Base RB = 100 kΩ (1/4W)",
+        "1x Resistencia de Colector RC = 330 Ω (1/4W)",
         "1x Fuente de Alimentación DC Variable (0 - 12V)",
-        "2x Multímetros Digitales (Medición simultánea de $I_B$ en $\\mu A$ e $I_C$ en $mA$)",
+        "2x Multímetros Digitales (Medición simultánea de IB en µA e IC en mA)",
         "1x Protoboard y cables"
       ],
       safetyNotes: [
-        "Asegurarse de conectar el multímetro de Base en la escala de microamperios (μA) o miliamperios (mA) antes de encender la fuente.",
-        "Verificar la distribución de patillas del 2N2222 (Vista plana frontal de izquierda a derecha: E-B-C en TO-92 común).",
-        "Evitar cortocircuitar el Colector a $V_{CC}$ sin la resistencia $R_C$ de protección."
+        "Asegurarse de conectar el multímetro de Base en la escala de microamperios (μA) antes de encender la fuente.",
+        "Verificar la distribución de patillas del 2N2222 (Vista plana frontal de izquierda a derecha: E-B-C).",
+        "Evitar cortocircuitar el Colector a VCC sin la resistencia RC de protección."
       ],
       steps: [
         {
           stepNumber: 1,
           title: "Montaje del Circuito Emisor Común",
-          description: "Conecte la Base a través de $R_B (100\\text{k}\\Omega)$ a $V_{BB} = 5\\text{V}$. Conecte el Colector a través de $R_C (330\\Omega)$ a $V_{CC} = 10\\text{V}$. Emisor directamente a Gnd.",
-          expectedResult: "Circuito de polarización fija listo para medir $V_{BE}, V_{CE}, I_B, I_C$."
+          description: "Conecte la Base a través de RB (100 kΩ) a VBB = 5V. Conecte el Colector a través de RC (330 Ω) a VCC = 10V. Emisor directamente a Gnd.",
+          expectedResult: "Circuito de polarización fija listo para medir VBE, VCE, IB, IC."
         },
         {
           stepNumber: 2,
-          title: "Medición de Corrientes $I_B$ e $I_C$",
-          description: "Intercale el multímetro 1 en serie con la Base para medir $I_B$. Intercale el multímetro 2 en serie con el Colector para medir $I_C$.",
-          expectedResult: "$I_B \\approx \\frac{5V - 0.7V}{100\\text{k}\\Omega} = 43\\ \\mu\\text{A}$. $I_C \\approx 6.88\\text{ mA}$."
+          title: "Medición de Corrientes IB e IC",
+          description: "Intercale el multímetro 1 en serie con la Base para medir IB. Intercale el multímetro 2 en serie con el Colector para medir IC.",
+          expectedResult: "IB ≈ (5V - 0.7V) / 100 kΩ = 43 µA. IC ≈ 6.88 mA."
         },
         {
           stepNumber: 3,
-          title: "Cálculo Experimental de $h_{FE}$",
-          description: "Divida la corriente de Colector $I_C$ medida entre la corriente de Base $I_B$ medida: $h_{FE} = \\frac{I_C}{I_B}$.",
-          expectedResult: "$h_{FE} = \\frac{6.88\\text{ mA}}{0.043\\text{ mA}} = 160$ (valor dentro del rango de datasheet 100-300 para el 2N2222)."
+          title: "Cálculo Experimental de hFE",
+          description: "Divida la corriente de Colector IC medida entre la corriente de Base IB medida: hFE = IC / IB.",
+          expectedResult: "hFE = 6.88 mA / 0.043 mA = 160 (valor dentro del rango de datasheet 100-300 para 2N2222)."
         },
         {
           stepNumber: 4,
           title: "Verificación de la Región de Saturación",
-          description: "Reduzca $R_B$ a $10\\text{ k}\\Omega$. Observe cómo $V_{CE}$ cae a $\\sim 0.15\\text{V}$.",
-          expectedResult: "El transistor entra en Saturación. $I_C$ alcanza el límite máximo $I_{C(sat)} \\approx \\frac{10V - 0.15V}{330\\Omega} = 29.8\\text{ mA}$."
+          description: "Reduzca RB a 10 kΩ. Observe cómo VCE cae a ~0.15V.",
+          expectedResult: "El transistor entra en Saturación. IC alcanza el límite máximo IC(sat) ≈ (10V - 0.15V) / 330 Ω = 29.8 mA."
         }
       ],
       solutionGuide: {
         title: "Guía de Comparación de Parámetros BJT",
         items: [
-          "**Transistor 2N2222A**: $h_{FE}$ típico = 100 - 300 a $I_C = 10\\text{ mA}$.",
-          "**Transistor BC548**: $h_{FE}$ típico = 200 - 450 (Clase B/C).",
-          "**Efecto de la Temperatura**: $h_{FE}$ aumenta aproximadamente +0.5% por cada °C de incremento térmico."
+          "**Transistor 2N2222A**: hFE típico = 100 - 300 a IC = 10 mA.",
+          "**Transistor BC548**: hFE típico = 200 - 450 (Clase B/C).",
+          "**Efecto de la Temperatura**: hFE aumenta aproximadamente +0.5% por cada °C de incremento térmico."
+        ]
+      },
+      tinkercadGuide: {
+        title: "Solución Gráfica del Maestro en Tinkercad Circuits (Práctica 3 - BJT 2N2222)",
+        tinkercadUrl: "https://www.tinkercad.com/circuits",
+        breadboardSetup: "Montar el transistor NPN 2N2222 en las columnas 20(E), 21(B), 22(C) del Protoboard Tinkercad. Fuente DC 1 configurada en 5V para Base y Fuente DC 2 configurada en 10V para Colector.",
+        wiringDetails: [
+          "Fuente DC 1 (+) Tinkercad a Amperímetro virtual 1 (Escala µA). Salida a RB = 100kΩ conectada a la Base (Pin 21).",
+          "Fuente DC 2 (+) Tinkercad a Amperímetro virtual 2 (Escala mA). Salida a RC = 330Ω conectada al Colector (Pin 22).",
+          "Emisor (Pin 20) conectado directamente al bus común de Tierra / Gnd (-).",
+          "Voltímetro virtual 3 (Modo V) entre Colector (Pin 22) y Emisor (Pin 20) para registrar VCEQ."
+        ],
+        expectedVirtualReadings: [
+          { test: "Corriente de Base IB (Tinkercad)", value: "43.0 µA", status: "Polarización B-E en Directa (0.7V)" },
+          { test: "Corriente de Colector IC (Tinkercad)", value: "6.88 mA", status: "Región Activa Lineal" },
+          { test: "Ganancia Calculada hFE (Tinkercad)", value: "hFE = 160", status: "Dentro de Especificación Datasheet" },
+          { test: "Prueba de Saturación RB=10kΩ (Tinkercad)", value: "VCE = 0.15V, IC = 29.8mA", status: "Saturación Completa (Switch ON)" }
         ]
       }
     },
     quiz: [
       {
         id: "q3_1",
-        question: "¿Cuál es la fórmula para calcular la ganancia de corriente continua ($h_{FE}$ o $\\beta$) de un transistor BJT en Emisor Común?",
+        question: "¿Cuál es la fórmula para calcular la ganancia de corriente continua (hFE o β) de un transistor BJT en Emisor Común?",
         options: [
-          "$h_{FE} = \\frac{V_{CE}}{I_C}$",
-          "$h_{FE} = \\frac{I_C}{I_B}$",
-          "$h_{FE} = \\frac{I_B}{I_E}$",
-          "$h_{FE} = I_C \\cdot I_B$"
+          "hFE = VCE / IC",
+          "hFE = IC / IB",
+          "hFE = IB / IE",
+          "hFE = IC * IB"
         ],
         correctIndex: 1,
-        explanation: "La ganancia $h_{FE}$ (Forward Current Transfer Ratio) se define como la razón entre la corriente de salida de Colector $I_C$ y la corriente de entrada de Base $I_B$."
+        explanation: "La ganancia hFE (Forward Current Transfer Ratio) se define como la razón entre la corriente de salida de Colector IC y la corriente de entrada de Base IB."
       },
       {
         id: "q3_2",
-        question: "En un transistor BJT NPN polarizado en Región de Saturación, ¿cuál es el valor típico de la tensión Colector-Emisor ($V_{CE(sat)}$)?",
+        question: "En un transistor BJT NPN polarizado en Región de Saturación, ¿cuál es el valor típico de la tensión Colector-Emisor (VCE(sat))?",
         options: [
           "0.1 V a 0.3 V",
           "0.7 V exactos",
-          "Igual a la fuente $V_{CC}$ (12V)",
+          "Igual a la fuente VCC (12V)",
           "-5.0 V"
         ],
         correctIndex: 0,
@@ -441,7 +492,7 @@ En la **Región Activa**: La unión B-E está polarizada en Directa ($V_{BE} \\a
       },
       {
         id: "q3_3",
-        question: "Si un transistor NPN tiene $I_B = 50\\ \\mu\\text{A}$ y una ganancia $h_{FE} = 150$, ¿cuál es la corriente de Colector $I_C$ en la región activa?",
+        question: "Si un transistor NPN tiene IB = 50 µA y una ganancia hFE = 150, ¿cuál es la corriente de Colector IC en la región activa?",
         options: [
           "0.75 mA",
           "7.5 mA",
@@ -449,31 +500,31 @@ En la **Región Activa**: La unión B-E está polarizada en Directa ($V_{BE} \\a
           "150 mA"
         ],
         correctIndex: 1,
-        explanation: "$I_C = h_{FE} \\cdot I_B = 150 \\cdot 50\\ \\mu\\text{A} = 7500\\ \\mu\\text{A} = 7.5\\text{ mA}$."
+        explanation: "IC = hFE * IB = 150 * 50 µA = 7500 µA = 7.5 mA."
       },
       {
         id: "q3_4",
-        question: "¿Qué ocurre con el punto de trabajo Q ($V_{CE}, I_C$) si aumenta la temperatura del transistor sin compensación térmica?",
+        question: "¿Qué ocurre con el punto de trabajo Q (VCE, IC) si aumenta la temperatura del transistor sin compensación térmica?",
         options: [
           "El punto Q se desplaza hacia la región de corte",
-          "La ganancia $h_{FE}$ e $I_S$ aumentan, desplazando el punto Q hacia arriba hacia la saturación (embalamiento térmico)",
+          "La ganancia hFE e IS aumentan, desplazando el punto Q hacia arriba hacia la saturación (embalamiento térmico)",
           "El transistor deja de conducir completamente",
-          "El voltaje $V_{BE}$ aumenta a 5V"
+          "El voltaje VBE aumenta a 5V"
         ],
         correctIndex: 1,
-        explanation: "El coeficiente térmico positivo de $h_{FE}$ y la corriente de fuga provocan que a mayor temperatura circule más $I_C$, calentando aún más el dispositivo."
+        explanation: "El coeficiente térmico positivo de hFE y la corriente de fuga provocan que a mayor temperatura circule más IC, calentando aún más el dispositivo."
       },
       {
         id: "q3_5",
         question: "Para utilizar un transistor BJT como un interruptor digital (Switch ON/OFF), ¿en qué dos regiones debe conmutar el dispositivo?",
         options: [
           "Región Activa y Región Zener",
-          "Región de Corte ($I_B=0$) y Región de Saturación ($V_{CE} \\approx 0.2V$)",
+          "Región de Corte (IB=0) y Región de Saturación (VCE ≈ 0.2V)",
           "Región de Triodo y Región de Ruptura",
           "Región de Avalancha y Región Omica"
         ],
         correctIndex: 1,
-        explanation: "Como interruptor abierto (OFF) opera en Corte ($I_C=0$), y como interruptor cerrado (ON) se fuerza a Saturación con $I_B$ suficiente."
+        explanation: "Como interruptor abierto (OFF) opera en Corte (IC=0), y como interruptor cerrado (ON) se fuerza a Saturación con IB suficiente."
       }
     ]
   },
@@ -495,9 +546,9 @@ En la **Región Activa**: La unión B-E está polarizada en Directa ($V_{BE} \\a
 - Tapetes disipativos sobre las mesas de trabajo.
 - Mantener los componentes en bolsas o tubos antiestáticos de apantallamiento hasta su inserción en el circuito.`,
         keyPoints: [
-          "Tensión de ruptura en Gate $V_{GS(max)} \\approx \\pm 20\\text{V}$.",
+          "Tensión de ruptura en Gate VGS(max) ≈ ±20V.",
           "Carga electrostática humana sin protección: ¡hasta 15,000V!",
-          "Resistencia de $1\\text{ M}\\Omega$ en la pulsera: Protege al operador de choques eléctricos de red."
+          "Resistencia de 1 MΩ en la pulsera: Protege al operador de choques eléctricos de red."
         ]
       },
       {
@@ -513,56 +564,74 @@ Las discrepancias comunes provienen de:
 2. Impedancia interna del multímetro ($10\\text{ M}\\Omega$ en voltaje, $\\sim 1\\Omega$ en corriente).
 3. Calentamiento por efecto Joule durante la prueba.`,
         keyPoints: [
-          "Tolerancia aceptable en laboratorio docente: $\\le 10\\%$.",
-          "Efecto de carga del voltímetro: Afecta circuitos de alta impedancia ($>100\\text{ k}\\Omega$)."
+          "Tolerancia aceptable en laboratorio docente: ≤ 10%.",
+          "Efecto de carga del voltímetro: Afecta circuitos de alta impedancia (>100 kΩ)."
         ]
       }
     ],
     labPractice: {
-      title: "Práctica 4 del Viernes: Caracterización Completa y Proyecto Integrador de Dispositivos",
-      objective: "Realizar el reporte técnico integrador comparando la curva I-V teórica de un diodo y la ganancia $h_{FE}$ de un BJT contra sus valores experimentales medidos, tabulando porcentajes de error.",
+      title: "Práctica 4 del Viernes: Caracterización Completa del MOSFET IRF540 y Proyecto Integrador",
+      objective: "Realizar la caracterización del canal N del MOSFET IRF540 determinando la tensión de umbral Vth y el porcentaje de error respecto a la hoja de datos en la memoria integradora.",
       materials: [
-        "1x Diodo 1N4007 y 1x Transistor NPN 2N2222",
-        "Resistencias de precisión de $330\\Omega$, $1\\text{ k}\\Omega$, $100\\text{ k}\\Omega$",
-        "Fuente DC y Multímetros de precisión calibrados",
-        "Pulsera ESD antiestática conectada a chasis/tierra",
-        "Plantilla de Reporte Técnico de Caracterización"
+        "1x MOSFET Canal N IRF540N (encapsulado TO-220)",
+        "1x Resistencia de Drenador RD = 100 Ω (1/2W)",
+        "1x Potenciómetro de 10 kΩ para ajuste de VGS",
+        "1x Fuente DC Variable (0 - 12V)",
+        "Pulsera ESD antiestática de seguridad (1 MΩ)",
+        "2x Multímetros Digitales"
       ],
       safetyNotes: [
-        "Verificar la conexión a tierra de la pulsera antiestática antes de tocar las patillas del MOSFET/BJT.",
-        "Calcular la potencia disipada $P = V_{CE} \\cdot I_C$ en el transistor para no exceder los $625\\text{ mW}$ del encapsulado TO-92."
+        "Conectar la pulsera antiestática ESD A TIERRA antes de retirar el MOSFET de su empaque de protección.",
+        "No exceder el voltaje en Gate VGS de ±20V durante la medición."
       ],
       steps: [
         {
           stepNumber: 1,
-          title: "Verificación de Protocolo Antiestático",
-          description: "Colóquese la pulsera ESD. Verifique con el megaóhmetro que la correa de muñeca presente una resistencia entre $0.9\\text{ M}\\Omega$ y $1.1\\text{ M}\\Omega$ a tierra.",
-          expectedResult: "Sistema ESD verificado y seguro para manipulación de componentes."
+          title: "Verificación de Protocolo Antiestático ESD",
+          description: "Colóquese la pulsera ESD. Verifique con el megaóhmetro que la correa de muñeca presente una resistencia de ~1 MΩ a tierra.",
+          expectedResult: "Sistema ESD verificado y seguro para manipulación del MOSFET IRF540."
         },
         {
           stepNumber: 2,
-          title: "Caracterización de Potencia y Temperatura",
-          description: "Mida el voltaje $V_{BE}$ y la corriente $I_C$ en el transistor 2N2222 al encenderlo y tras 3 minutos de operación continua.",
-          expectedResult: "Al calentarse ligeramente el transistor, $V_{BE}$ disminuye aproximadamente $-2\\text{ mV}/^\\circ\\text{C}$ e $I_C$ sube levemente."
+          title: "Montaje del Circuito de Conmutación MOSFET en Tinkercad",
+          description: "Conecte la Compuerta (Gate - Pin 1) al cursor central del potenciómetro de 10kΩ. Conecte el Drenador (Drain - Pin 2) a través de RD = 100Ω a VDD = 12V. Surtidor (Source - Pin 3) a Gnd.",
+          expectedResult: "Circuito listo para variar VGS desde 0V hasta 6V."
         },
         {
           stepNumber: 3,
-          title: "Tabulación Teórica vs Experimental",
-          description: "Llene la tabla comparativa con $V_{D(teo)} = 0.700\\text{V}$ vs $V_{D(exp)}$, e $h_{FE(teo)} = 150$ vs $h_{FE(exp)}$.",
-          expectedResult: "Cálculo automático de porcentaje de error para inclusión en la memoria técnica."
+          title: "Determinación Experimental de la Tensión de Umbral Vth",
+          description: "Gire lentamente el potenciómetro hasta que la corriente de Drenador ID alcance 1 mA. Registre VGS.",
+          expectedResult: "VGS(th) medido ≈ 3.2V (dentro del rango datasheet de 2.0V a 4.0V para el IRF540)."
         },
         {
           stepNumber: 4,
-          title: "Emisión del Dictamen Técnico",
-          description: "Determine si el componente cumple las especificaciones de la hoja de datos para su aprobación en control de calidad.",
-          expectedResult: "Aprobación o Rechazo del lote probado basado en límites de tolerancia."
+          title: "Emisión del Dictamen Integrador y % Error",
+          description: "Calcule el porcentaje de error entre Vth medido (3.2V) y el valor nominal de datasheet (3.0V).",
+          expectedResult: "% Error = |(3.2 - 3.0)/3.0| * 100 = 6.67% (Aprobado en control de calidad)."
         }
       ],
       solutionGuide: {
-        title: "Criterios de Aprobación de Control de Calidad",
+        title: "Criterios de Aprobación de Control de Calidad MOSFET",
         items: [
-          "**Diodo 1N4007**: $V_F \\le 0.8V$ a $I_F = 10\\text{ mA}$. Corriente inversa $I_R < 5\\ \\mu\\text{A}$ a $V_R = 50\\text{V}$.",
-          "**Transistor 2N2222**: $h_{FE} \\ge 100$ a $I_C = 10\\text{ mA}$, $V_{CE(sat)} \\le 0.3\\text{V}$."
+          "**MOSFET IRF540**: Vth entre 2.0V y 4.0V. RDS(on) ≤ 44 mΩ en conducción plena (VGS = 10V).",
+          "**Aislamiento de Gate**: Corriente de Compuerta IG = 0.00 µA (Resistencia > 100 MΩ)."
+        ]
+      },
+      tinkercadGuide: {
+        title: "Solución Gráfica del Maestro en Tinkercad Circuits (Práctica 4 - MOSFET IRF540)",
+        tinkercadUrl: "https://www.tinkercad.com/circuits",
+        breadboardSetup: "Insertar el MOSFET Canal N (IRF540) en las columnas 15(Gate), 16(Drain), 17(Source) del Protoboard Tinkercad. Potenciómetro 10kΩ conectado a la Fuente DC de 12V para ajustar VGS.",
+        wiringDetails: [
+          "Potenciómetro 10kΩ en Tinkercad: Terminal 1 a Gnd, Terminal 2 a Fuente DC (+12V), Limpiador/Cursor central a Gate del MOSFET (Pin 15).",
+          "Drenador (Pin 16) a la resistencia RD = 100Ω (1/2W) conectada al Amperímetro virtual en serie (Modo mA/A).",
+          "Surtidor (Pin 17) conectado a la linea de masa/tierra Gnd (-).",
+          "Voltímetro virtual 1 midiendo VGS (entre Gate y Source) y Voltímetro virtual 2 midiendo VDS (entre Drain y Source)."
+        ],
+        expectedVirtualReadings: [
+          { test: "VGS en 1.5V (< Vth en Tinkercad)", value: "ID = 0.00 mA, VDS = 12.0V", status: "Corte (Switch OFF)" },
+          { test: "VGS en 3.2V (Umbral Vth en Tinkercad)", value: "ID = 1.00 mA", status: "Inicio de Conducción (Umbral Alcanzado)" },
+          { test: "VGS en 5.0V (Saturación en Tinkercad)", value: "ID = 118 mA, VDS = 0.18V", status: "Conducción Plena Óhmica" },
+          { test: "Cálculo % Error Vth (Tinkercad)", value: "6.67 % Error", status: "Dictamen: CONFORME" }
         ]
       }
     },
@@ -572,7 +641,7 @@ Las discrepancias comunes provienen de:
         question: "¿Por qué los componentes con tecnología MOSFET o CMOS son significativamente más vulnerables al daño por Descargas Electrostáticas (ESD) que los diodos rectificadores?",
         options: [
           "Porque son más pequeños físicamente",
-          "Debido a la extrema delgadez de la capa aislante de óxido de silicio ($SiO_2$) en la compuerta, la cual se perfora con tensiones estáticas elevadas",
+          "Debido a la extrema delgadez de la capa aislante de óxido de silicio (SiO2) en la compuerta, la cual se perfora con tensiones estáticas elevadas",
           "Porque conducen corriente alterna",
           "Porque están hechos de cobre puro"
         ],
@@ -581,7 +650,7 @@ Las discrepancias comunes provienen de:
       },
       {
         id: "q4_2",
-        question: "¿Cuál es el propósito principal de incluir una resistencia de $1\\text{ M}\\Omega$ en serie dentro del cable de una pulsera antiestática ESD?",
+        question: "¿Cuál es el propósito principal de incluir una resistencia de 1 MΩ en serie dentro del cable de una pulsera antiestática ESD?",
         options: [
           "Aumentar el voltaje del cuerpo humano a 100V",
           "Proteger al usuario limitando la corriente a un nivel seguro en caso de tocar accidentalmente una línea de alta tensión",
@@ -589,11 +658,11 @@ Las discrepancias comunes provienen de:
           "Acelerar la descarga electrostática a velocidad cero"
         ],
         correctIndex: 1,
-        explanation: "La resistencia de $1\\text{ M}\\Omega$ permite drenar suavemente las cargas estáticas lentas hacia tierra sin permitir corrientes peligrosas (>0.5mA) a través del cuerpo humano si se toca la red eléctrica."
+        explanation: "La resistencia de 1 MΩ permite drenar suavemente las cargas estáticas lentas hacia tierra sin permitir corrientes peligrosas (>0.5mA) a través del cuerpo humano si se toca la red eléctrica."
       },
       {
         id: "q4_3",
-        question: "Si el valor teórico calculado para la corriente de colector es $I_{C(teo)} = 10.0\\text{ mA}$ y el valor medido en el laboratorio es $I_{C(exp)} = 9.2\\text{ mA}$, ¿cuál es el porcentaje de error?",
+        question: "Si el valor teórico calculado para la corriente de colector es IC(teo) = 10.0 mA y el valor medido en el laboratorio es IC(exp) = 9.2 mA, ¿cuál es el porcentaje de error?",
         options: [
           "5.0 %",
           "8.0 %",
@@ -601,11 +670,11 @@ Las discrepancias comunes provienen de:
           "0.8 %"
         ],
         correctIndex: 1,
-        explanation: "\\% Error = |(9.2 - 10.0) / 10.0| * 100 = |-0.8 / 10.0| * 100 = 8.0%."
+        explanation: "% Error = |(9.2 - 10.0) / 10.0| * 100 = |-0.8 / 10.0| * 100 = 8.0%."
       },
       {
         id: "q4_4",
-        question: "¿Qué efecto causa el incremento de temperatura en la caída de voltaje directa ($V_{BE}$) de una unión PN a corriente constante?",
+        question: "¿Qué efecto causa el incremento de temperatura en la caída de voltaje directa (VBE) de una unión PN a corriente constante?",
         options: [
           "Aumenta a razón de +10 mV/°C",
           "Disminuye a razón de aproximadamente -2 mV/°C a -2.5 mV/°C",
@@ -613,7 +682,7 @@ Las discrepancias comunes provienen de:
           "Se vuelve infinita"
         ],
         correctIndex: 1,
-        explanation: "El coeficiente de temperatura de la unión PN es negativo, cayendo aproximadamente $-2\\text{ mV}$ por cada grado Celsius de elevación térmica."
+        explanation: "El coeficiente de temperatura de la unión PN es negativo, cayendo aproximadamente -2 mV por cada grado Celsius de elevación térmica."
       },
       {
         id: "q4_5",
