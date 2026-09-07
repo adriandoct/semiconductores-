@@ -3,11 +3,13 @@ import DiodeIVSimulator from '../simulators/DiodeIVSimulator';
 import BJTCurveSimulator from '../simulators/BJTCurveSimulator';
 import MOSFETSimulator from '../simulators/MOSFETSimulator';
 import OscilloscopeSimulator from '../simulators/OscilloscopeSimulator';
+import TinkercadCircuitSimulator from '../simulators/TinkercadCircuitSimulator';
 import PinoutInspector from '../pinouts/PinoutInspector';
-import { Activity, Cpu, Zap, Eye, Calculator, Radio, Sparkles } from 'lucide-react';
+import { Activity, Cpu, Zap, Eye, Calculator, Radio, Monitor } from 'lucide-react';
 
 export default function ToolsView() {
-  const [selectedTool, setSelectedTool] = useState('diode'); // 'diode' | 'oscilloscope' | 'bjt' | 'mosfet' | 'pinout'
+  const [selectedTool, setSelectedTool] = useState('tinkercad'); // 'tinkercad' | 'diode' | 'oscilloscope' | 'bjt' | 'mosfet' | 'pinout'
+  const [tinkercadWeek, setTinkercadWeek] = useState(1);
 
   return (
     <div className="space-y-6">
@@ -24,6 +26,17 @@ export default function ToolsView() {
         </div>
 
         <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => setSelectedTool('tinkercad')}
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              selectedTool === 'tinkercad'
+                ? 'bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-500 text-slate-950 shadow-lg shadow-cyan-500/25 border border-cyan-300'
+                : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 border border-slate-700'
+            }`}
+          >
+            <Monitor className="w-4 h-4 text-cyan-950" /> Tinkercad Circuits
+          </button>
+
           <button
             onClick={() => setSelectedTool('diode')}
             className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
@@ -83,6 +96,27 @@ export default function ToolsView() {
 
       {/* Render Active Tool */}
       <div>
+        {selectedTool === 'tinkercad' && (
+          <div className="space-y-4">
+            <div className="flex gap-2 bg-slate-900 p-2 rounded-2xl border border-slate-800">
+              <span className="text-xs font-bold text-slate-400 self-center px-2">Seleccionar Circuito Tinkercad:</span>
+              {[1, 2, 3, 4].map((w) => (
+                <button
+                  key={w}
+                  onClick={() => setTinkercadWeek(w)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    tinkercadWeek === w
+                      ? 'bg-cyan-500 text-slate-950'
+                      : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  }`}
+                >
+                  Semana {w}
+                </button>
+              ))}
+            </div>
+            <TinkercadCircuitSimulator weekId={tinkercadWeek} />
+          </div>
+        )}
         {selectedTool === 'diode' && <DiodeIVSimulator />}
         {selectedTool === 'oscilloscope' && <OscilloscopeSimulator />}
         {selectedTool === 'bjt' && <BJTCurveSimulator />}
