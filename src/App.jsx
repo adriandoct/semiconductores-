@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import HeroBanner from './components/layout/HeroBanner';
@@ -11,17 +11,25 @@ import { BookOpen, Wrench, FileText, ChevronRight, Award, Zap } from 'lucide-rea
 export default function App() {
   const [activeTab, setActiveTab] = useState('week'); // 'week' | 'tools' | 'reports'
   const [currentWeek, setCurrentWeek] = useState(1);
+  const [theme, setTheme] = useState('cyberpunk'); // 'cyberpunk' | 'matrix' | 'amber' | 'solar'
+
+  // Apply data-theme attribute to document body for dynamic CSS skinning
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const selectedWeekData = WEEKS_DATA.find((w) => w.id === currentWeek) || WEEKS_DATA[0];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950">
+    <div className="min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-400">
       {/* Top Navbar */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         currentWeek={currentWeek}
         setCurrentWeek={setCurrentWeek}
+        currentTheme={theme}
+        setCurrentTheme={setTheme}
       />
 
       {/* Main Container */}

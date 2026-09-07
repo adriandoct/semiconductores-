@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import { COURSE_INFO } from '../../data/courseData';
-import { Cpu, BookOpen, Wrench, FileText, Menu, X, Zap, Award, Sparkles } from 'lucide-react';
+import { Cpu, BookOpen, Wrench, FileText, Menu, X, Zap, Award, Sparkles, Palette } from 'lucide-react';
 
-export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurrentWeek }) {
+export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurrentWeek, currentTheme, setCurrentTheme }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
 
   const navItems = [
     { id: 'week-1', label: 'Semana 1', sub: 'Fundamentos' },
     { id: 'week-2', label: 'Semana 2', sub: 'Curva I-V Diodo' },
     { id: 'week-3', label: 'Semana 3', sub: 'Ganancia BJT (hFE)' },
     { id: 'week-4', label: 'Semana 4', sub: 'ESD y Reporte' },
+  ];
+
+  const themes = [
+    { id: 'cyberpunk', name: '🌌 Cyberpunk Neon', color: 'bg-cyan-500' },
+    { id: 'matrix', name: '⚡ Matrix Emerald', color: 'bg-emerald-500' },
+    { id: 'amber', name: '🔥 Amber Sunset', color: 'bg-amber-500' },
+    { id: 'solar', name: '💎 Solar Flare', color: 'bg-sky-400' },
   ];
 
   return (
@@ -67,12 +75,12 @@ export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurren
               );
             })}
 
-            <div className="h-6 w-px bg-slate-800/80 mx-2"></div>
+            <div className="h-6 w-px bg-slate-800/80 mx-1"></div>
 
             {/* Extra Tools Tabs */}
             <button
               onClick={() => setActiveTab('tools')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                 activeTab === 'tools'
                   ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-500/25 border border-violet-400/30'
                   : 'text-slate-300 hover:bg-slate-800/80 hover:text-white'
@@ -83,7 +91,7 @@ export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurren
 
             <button
               onClick={() => setActiveTab('reports')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                 activeTab === 'reports'
                   ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 shadow-lg shadow-emerald-500/25 font-bold border border-emerald-400/40'
                   : 'text-slate-300 hover:bg-slate-800/80 hover:text-white'
@@ -91,13 +99,56 @@ export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurren
             >
               <FileText className="w-4 h-4 text-emerald-400" /> Reportes PDF
             </button>
+
+            {/* Dynamic Theme Picker Dropdown */}
+            <div className="relative pl-1">
+              <button
+                onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
+                className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-cyan-300 border border-cyan-500/30 text-xs font-bold flex items-center gap-1.5 transition-all"
+                title="Cambiar Apariencia / Tema"
+              >
+                <Palette className="w-4 h-4 text-cyan-400" />
+                <span className="hidden lg:inline">Apariencia</span>
+              </button>
+
+              {themeDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-slate-950 border border-cyan-500/30 rounded-2xl shadow-2xl p-2 space-y-1 z-50 animate-in fade-in duration-150">
+                  <span className="text-[10px] text-slate-400 uppercase font-bold block px-2 py-1">
+                    Seleccionar Tema Visual:
+                  </span>
+                  {themes.map((t) => (
+                    <button
+                      key={t.id}
+                      onClick={() => {
+                        setCurrentTheme(t.id);
+                        setThemeDropdownOpen(false);
+                      }}
+                      className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-between ${
+                        currentTheme === t.id
+                          ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                          : 'text-slate-300 hover:bg-slate-900'
+                      }`}
+                    >
+                      <span>{t.name}</span>
+                      <span className={`w-2.5 h-2.5 rounded-full ${t.color}`}></span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Mobile Menu Toggle Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
+              className="p-2 rounded-lg bg-slate-800 text-cyan-400 border border-slate-700"
+            >
+              <Palette className="w-5 h-5" />
+            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700"
+              className="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
