@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { COURSE_INFO } from '../../data/courseData';
-import { Cpu, BookOpen, Wrench, FileText, Menu, X, Zap, Award, Sparkles, Palette, Monitor } from 'lucide-react';
+import { Cpu, BookOpen, Wrench, FileText, Menu, X, Zap, Award, Sparkles, Palette, Monitor, Tv } from 'lucide-react';
 
-export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurrentWeek, currentTheme, setCurrentTheme }) {
+export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurrentWeek, currentTheme, setCurrentTheme, onOpenVideoModal }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
 
@@ -86,7 +86,16 @@ export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurren
                   : 'text-slate-300 hover:bg-slate-800/80 hover:text-white'
               }`}
             >
-              <Monitor className="w-4 h-4 text-cyan-300" /> Prácticas Viernes Tinkercad
+              <Monitor className="w-4 h-4 text-cyan-300" /> Prácticas Viernes
+            </button>
+
+            {/* Retroalimentación Videos Button */}
+            <button
+              onClick={() => onOpenVideoModal()}
+              className="px-3 py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-cyan-500/20 to-blue-600/20 hover:from-cyan-500/30 hover:to-blue-600/30 text-cyan-300 border border-cyan-500/40 shadow-sm flex items-center gap-1.5 transition-all"
+              title="Abrir Videoteca de Retroalimentación en Ventana"
+            >
+              <Tv className="w-4 h-4 text-cyan-400" /> Videos
             </button>
 
             {/* Extra Tools Tabs */}
@@ -187,8 +196,15 @@ export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurren
           ))}
           <div className="border-t border-slate-800/80 pt-3 space-y-2">
             <button
+              onClick={() => { onOpenVideoModal(); setMobileMenuOpen(false); }}
+              className="w-full text-left p-3 rounded-xl text-sm font-bold text-cyan-300 hover:bg-slate-800/80 flex justify-between items-center border border-cyan-500/40 bg-cyan-950/30"
+            >
+              <span>Videos de Retroalimentación 🎬</span>
+              <Tv className="w-4 h-4 text-cyan-400" />
+            </button>
+            <button
               onClick={() => { setActiveTab('friday'); setMobileMenuOpen(false); }}
-              className="w-full text-left p-3 rounded-xl text-sm font-bold text-cyan-300 hover:bg-slate-800/80 flex justify-between items-center border border-slate-800/60 bg-cyan-950/20"
+              className="w-full text-left p-3 rounded-xl text-sm font-bold text-slate-200 hover:bg-slate-800/80 flex justify-between items-center border border-slate-800/60 bg-slate-900/60"
             >
               <span>Prácticas de Viernes (Tinkercad)</span>
               <Monitor className="w-4 h-4 text-cyan-400" />

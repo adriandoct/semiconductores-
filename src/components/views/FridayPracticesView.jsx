@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { WEEKS_DATA } from '../../data/courseData';
 import TinkercadCircuitSimulator from '../simulators/TinkercadCircuitSimulator';
-import { Monitor, Cpu, ExternalLink, ShieldCheck, CheckCircle2, FileText, Sparkles, AlertTriangle, Layers, BookOpen } from 'lucide-react';
+import { Monitor, Cpu, ExternalLink, ShieldCheck, CheckCircle2, FileText, Sparkles, AlertTriangle, Layers, BookOpen, Tv } from 'lucide-react';
 
-export default function FridayPracticesView() {
+export default function FridayPracticesView({ onOpenVideoModal }) {
   const [selectedWeek, setSelectedWeek] = useState(1);
   const weekData = WEEKS_DATA.find((w) => w.id === selectedWeek) || WEEKS_DATA[0];
   const tinkercadGuide = weekData.labPractice.tinkercadGuide;
@@ -31,15 +31,25 @@ export default function FridayPracticesView() {
             </p>
           </div>
 
-          <a
-            href="https://www.tinkercad.com/circuits"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-black text-xs rounded-2xl shadow-lg shadow-cyan-500/25 flex items-center gap-2 transition-all transform hover:scale-105"
-          >
-            <span>Abrir Tinkercad Circuits</span>
-            <ExternalLink className="w-4 h-4" />
-          </a>
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => onOpenVideoModal && onOpenVideoModal(selectedWeek === 1 ? 'vid-tinkercad-tutorial' : selectedWeek === 2 ? 'vid-diode-iv-curve' : selectedWeek === 3 ? 'vid-bjt-hfe' : 'vid-esd-safety')}
+              className="px-4 py-2.5 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-extrabold text-xs rounded-2xl shadow-lg shadow-violet-500/25 flex items-center gap-2 transition-all transform hover:scale-105 border border-violet-400/40"
+            >
+              <Tv className="w-4 h-4 text-cyan-300" />
+              <span>Ver Video Tutorial 🎬</span>
+            </button>
+
+            <a
+              href="https://www.tinkercad.com/circuits"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-black text-xs rounded-2xl shadow-lg shadow-cyan-500/25 flex items-center gap-2 transition-all transform hover:scale-105"
+            >
+              <span>Abrir Tinkercad</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
         </div>
 
         {/* Friday Practice Selector Tabs */}

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { BookOpen, Wrench, CheckCircle2, XCircle, HelpCircle, ShieldAlert, Award, ChevronDown, ChevronUp, Eye, EyeOff, Zap, CheckSquare, Square, RotateCcw, Sparkles, ExternalLink, Monitor, Cpu } from 'lucide-react';
+import { BookOpen, Wrench, CheckCircle2, XCircle, HelpCircle, ShieldAlert, Award, ChevronDown, ChevronUp, Eye, EyeOff, Zap, CheckSquare, Square, RotateCcw, Sparkles, ExternalLink, Monitor, Cpu, Tv, Play } from 'lucide-react';
 import DiodeIVSimulator from '../simulators/DiodeIVSimulator';
 import BJTCurveSimulator from '../simulators/BJTCurveSimulator';
 import MOSFETSimulator from '../simulators/MOSFETSimulator';
 import TinkercadCircuitSimulator from '../simulators/TinkercadCircuitSimulator';
 
-export default function WeekView({ weekData }) {
+export default function WeekView({ weekData, onOpenVideoModal }) {
   const [activeTab, setActiveTab] = useState('theory'); // 'theory' | 'lab' | 'quiz'
   
   // Accordion state for lab steps
@@ -118,6 +118,13 @@ export default function WeekView({ weekData }) {
             >
               <Award className="w-4 h-4" /> 📝 3. Cuestionario ({weekData.quiz.length} Preguntas)
             </button>
+
+            <button
+              onClick={() => onOpenVideoModal && onOpenVideoModal()}
+              className="px-5 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-cyan-500/20 to-blue-600/30 hover:from-cyan-500/30 hover:to-blue-600/40 text-cyan-300 border border-cyan-500/50 shadow-md flex items-center gap-2 transition-all"
+            >
+              <Tv className="w-4 h-4 text-cyan-400 animate-pulse" /> 🎬 Video de Retroalimentación
+            </button>
           </div>
         </div>
       </div>
@@ -137,13 +144,23 @@ export default function WeekView({ weekData }) {
                 key={sec.id} 
                 className="glassmorphism-card p-6 md:p-8 rounded-3xl space-y-4"
               >
-                <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                  <div className="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center font-bold font-mono text-sm shrink-0">
-                    1.{idx + 1}
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center font-bold font-mono text-sm shrink-0">
+                      1.{idx + 1}
+                    </div>
+                    <h3 className="text-xl font-extrabold text-white font-heading">
+                      {sec.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-extrabold text-white font-heading">
-                    {sec.title}
-                  </h3>
+
+                  <button
+                    onClick={() => onOpenVideoModal && onOpenVideoModal()}
+                    className="px-3.5 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
+                  >
+                    <Tv className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Ver Retroalimentación en Video</span>
+                  </button>
                 </div>
 
                 <div className="text-slate-300 text-sm leading-relaxed whitespace-pre-line font-sans">

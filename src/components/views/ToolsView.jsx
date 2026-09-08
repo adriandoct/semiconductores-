@@ -5,9 +5,9 @@ import MOSFETSimulator from '../simulators/MOSFETSimulator';
 import OscilloscopeSimulator from '../simulators/OscilloscopeSimulator';
 import TinkercadCircuitSimulator from '../simulators/TinkercadCircuitSimulator';
 import PinoutInspector from '../pinouts/PinoutInspector';
-import { Activity, Cpu, Zap, Eye, Calculator, Radio, Monitor } from 'lucide-react';
+import { Activity, Cpu, Zap, Eye, Calculator, Radio, Monitor, Tv } from 'lucide-react';
 
-export default function ToolsView() {
+export default function ToolsView({ onOpenVideoModal }) {
   const [selectedTool, setSelectedTool] = useState('tinkercad'); // 'tinkercad' | 'diode' | 'oscilloscope' | 'bjt' | 'mosfet' | 'pinout'
   const [tinkercadWeek, setTinkercadWeek] = useState(1);
 
@@ -15,14 +15,24 @@ export default function ToolsView() {
     <div className="space-y-6">
       {/* Tool Selector Bar */}
       <div className="glassmorphism-card p-5 rounded-3xl border border-cyan-500/30 bg-slate-900/90 text-white flex flex-wrap items-center justify-between gap-4 shadow-2xl">
-        <div>
-          <h2 className="text-xl font-black text-white flex items-center gap-2 font-heading">
-            <Calculator className="w-6 h-6 text-cyan-400" />
-            Laboratorio Virtual & Workbench de Caracterización
-          </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Simulación interactiva de parámetros físicos y análisis de semiconductores en tiempo real
-          </p>
+        <div className="flex items-center justify-between w-full sm:w-auto gap-4">
+          <div>
+            <h2 className="text-xl font-black text-white flex items-center gap-2 font-heading">
+              <Calculator className="w-6 h-6 text-cyan-400" />
+              Laboratorio Virtual & Workbench de Caracterización
+            </h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              Simulación interactiva de parámetros físicos y análisis de semiconductores en tiempo real
+            </p>
+          </div>
+
+          <button
+            onClick={() => onOpenVideoModal && onOpenVideoModal()}
+            className="px-3.5 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm shrink-0"
+          >
+            <Tv className="w-4 h-4 text-cyan-400 animate-pulse" />
+            <span>Videoteca 🎬</span>
+          </button>
         </div>
 
         <div className="flex flex-wrap gap-2">

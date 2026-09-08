@@ -6,7 +6,10 @@ import WeekView from './components/views/WeekView';
 import ToolsView from './components/views/ToolsView';
 import FridayPracticesView from './components/views/FridayPracticesView';
 import ReportGeneratorView from './components/views/ReportGeneratorView';
+import VideoModal from './components/common/VideoModal';
+import FloatingVideoButton from './components/common/FloatingVideoButton';
 import { WEEKS_DATA } from './data/courseData';
+import { FEEDBACK_VIDEOS } from './data/videoData';
 import { BookOpen, Wrench, FileText, ChevronRight, Award, Zap } from 'lucide-react';
 
 export default function App() {
@@ -14,12 +17,29 @@ export default function App() {
   const [currentWeek, setCurrentWeek] = useState(1);
   const [theme, setTheme] = useState('cyberpunk'); // 'cyberpunk' | 'matrix' | 'amber' | 'solar'
 
+  // Video Modal State
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [activeVideoId, setActiveVideoId] = useState('vid-pn-junction');
+
   // Apply data-theme attribute to document body for dynamic CSS skinning
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   const selectedWeekData = WEEKS_DATA.find((w) => w.id === currentWeek) || WEEKS_DATA[0];
+
+  const handleOpenVideoModal = (videoId) => {
+    if (videoId) {
+      setActiveVideoId(videoId);
+    } else {
+      // Find a video matching currentWeek if available, else first video
+      const matchingVideo = FEEDBACK_VIDEOS.find((v) => v.weekId === currentWeek);
+      if (matchingVideo) {
+        setActiveVideoId(matchingVideo.id);
+      }
+    }
+    setIsVideoModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-400">
@@ -31,6 +51,7 @@ export default function App() {
         setCurrentWeek={setCurrentWeek}
         currentTheme={theme}
         setCurrentTheme={setTheme}
+        onOpenVideoModal={handleOpenVideoModal}
       />
 
       {/* Main Container */}
@@ -70,21 +91,39 @@ export default function App() {
 
         {/* Dynamic Views */}
         {activeTab === 'week' && (
-          <WeekView weekData={selectedWeekData} />
+          <WeekView 
+            weekData={selectedWeekData} 
+            onOpenVideoModal={handleOpenVideoModal}
+          />
         )}
 
         {activeTab === 'friday' && (
-          <FridayPracticesView />
+          <FridayPracticesView 
+            onOpenVideoModal={handleOpenVideoModal}
+          />
         )}
 
         {activeTab === 'tools' && (
-          <ToolsView />
+          <ToolsView 
+            onOpenVideoModal={handleOpenVideoModal}
+          />
         )}
 
         {activeTab === 'reports' && (
           <ReportGeneratorView />
         )}
       </main>
+
+      {/* Floating Video Access Button */}
+      <FloatingVideoButton onOpenVideos={() => handleOpenVideoModal()} />
+
+      {/* Retroalimentación Video Modal Player Window */}
+      <VideoModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        currentVideoId={activeVideoId}
+        onSelectVideo={(vId) => setActiveVideoId(vId)}
+      />
 
       {/* Footer */}
       <Footer />
