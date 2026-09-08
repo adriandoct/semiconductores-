@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { COURSE_INFO } from '../../data/courseData';
-import { Cpu, BookOpen, Wrench, FileText, Menu, X, Zap, Award, Sparkles, Palette } from 'lucide-react';
+import { Cpu, BookOpen, Wrench, FileText, Menu, X, Zap, Award, Sparkles, Palette, Monitor } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurrentWeek, currentTheme, setCurrentTheme }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -76,6 +76,18 @@ export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurren
             })}
 
             <div className="h-6 w-px bg-slate-800/80 mx-1"></div>
+
+            {/* Friday Tinkercad Solucionario Tab */}
+            <button
+              onClick={() => setActiveTab('friday')}
+              className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                activeTab === 'friday'
+                  ? 'bg-gradient-to-r from-cyan-400 via-teal-400 to-blue-500 text-slate-950 font-black shadow-lg shadow-cyan-500/25 border border-cyan-300'
+                  : 'text-slate-300 hover:bg-slate-800/80 hover:text-white'
+              }`}
+            >
+              <Monitor className="w-4 h-4 text-cyan-300" /> Prácticas Viernes Tinkercad
+            </button>
 
             {/* Extra Tools Tabs */}
             <button
@@ -174,6 +186,13 @@ export default function Navbar({ activeTab, setActiveTab, currentWeek, setCurren
             </button>
           ))}
           <div className="border-t border-slate-800/80 pt-3 space-y-2">
+            <button
+              onClick={() => { setActiveTab('friday'); setMobileMenuOpen(false); }}
+              className="w-full text-left p-3 rounded-xl text-sm font-bold text-cyan-300 hover:bg-slate-800/80 flex justify-between items-center border border-slate-800/60 bg-cyan-950/20"
+            >
+              <span>Prácticas de Viernes (Tinkercad)</span>
+              <Monitor className="w-4 h-4 text-cyan-400" />
+            </button>
             <button
               onClick={() => { setActiveTab('tools'); setMobileMenuOpen(false); }}
               className="w-full text-left p-3 rounded-xl text-sm font-bold text-violet-300 hover:bg-slate-800/80 flex justify-between items-center border border-slate-800/60 bg-violet-950/20"

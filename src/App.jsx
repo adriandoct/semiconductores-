@@ -4,12 +4,13 @@ import Footer from './components/layout/Footer';
 import HeroBanner from './components/layout/HeroBanner';
 import WeekView from './components/views/WeekView';
 import ToolsView from './components/views/ToolsView';
+import FridayPracticesView from './components/views/FridayPracticesView';
 import ReportGeneratorView from './components/views/ReportGeneratorView';
 import { WEEKS_DATA } from './data/courseData';
 import { BookOpen, Wrench, FileText, ChevronRight, Award, Zap } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('week'); // 'week' | 'tools' | 'reports'
+  const [activeTab, setActiveTab] = useState('week'); // 'week' | 'friday' | 'tools' | 'reports'
   const [currentWeek, setCurrentWeek] = useState(1);
   const [theme, setTheme] = useState('cyberpunk'); // 'cyberpunk' | 'matrix' | 'amber' | 'solar'
 
@@ -37,7 +38,7 @@ export default function App() {
         
         {/* Hero Presentation Banner */}
         {activeTab === 'week' && (
-          <HeroBanner onExploreTools={() => setActiveTab('tools')} />
+          <HeroBanner onExploreTools={() => setActiveTab('friday')} />
         )}
 
         {/* Quick Module Navigator Bar */}
@@ -70,6 +71,10 @@ export default function App() {
         {/* Dynamic Views */}
         {activeTab === 'week' && (
           <WeekView weekData={selectedWeekData} />
+        )}
+
+        {activeTab === 'friday' && (
+          <FridayPracticesView />
         )}
 
         {activeTab === 'tools' && (
